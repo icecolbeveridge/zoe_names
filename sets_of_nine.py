@@ -44,7 +44,6 @@ def recursive_groups(current_group, possible_extensions):
                 n = (names_by_letters[s] for s in current_group + [p])
                 for pn in itertools.product(*n):
                     nines.add( frozenset(pn) )
-                    print (len(nines), "-".join(pn))
         else:
             recursive_groups( current_group + [p], next_poss)
 
@@ -72,3 +71,7 @@ for i in range(len(no_vowels), 1, -1):
             recursive_groups(list(s), pe)
 
 print(time.strftime("%H:%M:%S", time.localtime()))
+
+to_print = list(nines)
+to_print.sort()
+print("\n".join(to_print))
